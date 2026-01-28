@@ -1,9 +1,24 @@
+<!-- Vanta.js Birds Background -->
+<div #vantaBackground class="vanta-background"></div>
+
 <div class="bg-scroll-container">
   <div class="orb orb-1"></div>
   <div class="orb orb-2"></div>
   <div class="orb orb-3"></div>
   <div class="polkadot-grid"></div>
   <div class="cursor-spotlight"></div>
+  <div class="particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
 </div>
 
 <nav class="navbar">
@@ -29,6 +44,7 @@
   <section id="home" class="hero section-padding">
     <div class="container hero-grid">
       <div class="hero-content on-scroll-reveal active">
+        <span class="hero-label">👋 Welcome to my portfolio</span>
         <h1 class="hero-title">{{ userData.title }}</h1>
         <p class="hero-summary">{{ userData.summary }}</p>
         <div class="hero-btns">
@@ -42,10 +58,20 @@
     </div>
   </section>
 
+  <!-- Section Divider -->
+  <div class="section-divider">
+    <div class="divider-line"></div>
+    <span class="divider-icon">✦</span>
+    <div class="divider-line"></div>
+  </div>
+
   <!-- About & Skills -->
   <section id="about" class="section-padding on-scroll-reveal">
     <div class="container">
-      <h2 class="section-title">About me & Skills</h2>
+      <div class="section-header">
+        <span class="section-label">Get to know me</span>
+        <h2 class="section-title">About me & Skills</h2>
+      </div>
       <div class="about-grid">
         <div class="about-text">
           <p>{{ userData.summary }}</p>
@@ -53,6 +79,7 @@
             <img src="assets/angular_crystal_shield_3d.png" alt="Angular Concept" class="about-img">
           </div>
           <div class="education mt-4">
+            <h3 class="subsection-title">Education</h3>
             <div *ngFor="let edu of userData.education" class="edu-item">
               <h4 class="primary-color">{{ edu.degree }}</h4>
               <p>{{ edu.institution }}</p>
@@ -60,7 +87,9 @@
           </div>
         </div>
         <div id="skills" class="skills-list">
-          <div *ngFor="let group of userData.skills" class="skill-group">
+          <div *ngFor="let group of userData.skills; let i = index" class="skill-group"
+            [style.animation-delay]="(i * 0.1) + 's'">
+            <div class="skill-icon">{{ getSkillIcon(group.category) }}</div>
             <h3>{{ group.category }}</h3>
             <p>{{ group.items.join(', ') }}</p>
           </div>
@@ -69,31 +98,55 @@
     </div>
   </section>
 
+  <!-- Section Divider -->
+  <div class="section-divider">
+    <div class="divider-line"></div>
+    <span class="divider-icon">◈</span>
+    <div class="divider-line"></div>
+  </div>
+
   <!-- Experience -->
   <section id="experience" class="section-padding on-scroll-reveal">
     <div class="container">
-      <h2 class="section-title">Experience.</h2>
-      <div class="experience-list">
-        <div *ngFor="let exp of userData.experience" class="exp-item border-bottom">
-          <div class="exp-header">
-            <h3>{{ exp.role }}</h3>
-            <span class="period">{{ exp.period }}</span>
+      <div class="section-header">
+        <span class="section-label">My journey</span>
+        <h2 class="section-title">Experience</h2>
+      </div>
+      <div class="experience-timeline">
+        <div *ngFor="let exp of userData.experience; let i = index; let last = last" class="exp-item"
+          [class.border-bottom]="!last">
+          <div class="exp-timeline-dot"></div>
+          <div class="exp-content">
+            <div class="exp-header">
+              <h3>{{ exp.role }}</h3>
+              <span class="period">{{ exp.period }}</span>
+            </div>
+            <h4 class="company primary-color">{{ exp.company }}</h4>
+            <ul class="responsibilities">
+              <li *ngFor="let res of exp.responsibilities">{{ res }}</li>
+            </ul>
           </div>
-          <h4 class="company primary-color">{{ exp.company }}</h4>
-          <ul class="responsibilities">
-            <li *ngFor="let res of exp.responsibilities">{{ res }}</li>
-          </ul>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Section Divider -->
+  <div class="section-divider">
+    <div class="divider-line"></div>
+    <span class="divider-icon">◇</span>
+    <div class="divider-line"></div>
+  </div>
+
   <!-- Contact -->
   <section id="contact" class="section-padding on-scroll-reveal">
     <div class="container text-center">
-      <h2 class="section-title">Let's interface.</h2>
+      <div class="section-header">
+        <span class="section-label">Get in touch</span>
+        <h2 class="section-title">Let's interface.</h2>
+      </div>
       <div class="contact-card">
-        <p class="mb-4">I'm currently open for new opportunities and collaborations.</p>
+        <p class="contact-intro">I'm currently open for new opportunities and collaborations.</p>
         <div class="contact-links">
           <a href="mailto:hchaudhary1792000@gmail.com" class="contact-link">{{mail}}</a>
           <div class="social-links mt-4">
