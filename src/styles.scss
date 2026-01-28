@@ -1,1 +1,87 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    /* Default Dark Theme */
+    --primary: #3b82f6;
+    --primary-light: #60a5fa;
+    --bg: #000000;
+    --bg-card: #111111;
+    --text: #ffffff;
+    --text-muted: #888888;
+    --border: #333333;
+    --font-main: 'Inter', sans-serif;
+    --transition: all 0.3s ease;
+}
+
+.light-theme {
+    --bg: #ffffff;
+    --bg-card: #f8f9fa;
+    --text: #000000;
+    --text-muted: #666666;
+    --border: #eeeeee;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.section-padding {
+    padding: 5rem 0;
+}
+
+.primary-color {
+    color: var(--primary);
+}
+
+.on-scroll-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
+}
+
+.on-scroll-reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
